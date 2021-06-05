@@ -11,7 +11,6 @@ from padinfo.view.awakening_list import AwakeningListViewState, AwakeningListVie
 
 class AwakeningListEmoji:
     delete = '\N{CROSS MARK}'
-    refresh = '\N{ANTICLOCKWISE DOWNWARDS AND UPWARDS OPEN CIRCLE ARROWS}'
     home = emoji_buttons['home']
     prev_page = '\N{BLACK LEFT-POINTING DOUBLE TRIANGLE}'
     next_page = '\N{BLACK RIGHT-POINTING DOUBLE TRIANGLE}'
@@ -20,7 +19,7 @@ class AwakeningListEmoji:
 
 
 class AwakeningListMenu:
-    MENU_TYPE = ChildMenuSelector.AwakeningList.name
+    MENU_TYPE = "AwakeningList"
 
     @staticmethod
     def menu(initial_control=None):
@@ -94,7 +93,6 @@ class AwakeningListMenuPanes(MenuPanes):
 
     HIDDEN_EMOJIS = [
         AwakeningListEmoji.home,
-        AwakeningListEmoji.refresh,
     ]
 
     OPTIONAL_EMOJIS = [

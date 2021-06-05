@@ -636,17 +636,27 @@ class PadInfo(commands.Cog):
         initial_reaction_list = MonsterListMenuPanes.get_initial_reaction_list(len(monster_list))
         instruction_message = 'Click a reaction to see monster details!'
 
+        extra_state = {}
         if child_menu_type is None:
             child_menu_type = query_settings.menuselect.name
             _, child_panes_class = padinfo_menu_map[child_menu_type]
             child_reaction_list = child_panes_class.emoji_names()
+
+            # handle awakenings separately though
+            if child_menu_type == AwakeningListMenu.MENU_TYPE:
+                child_menu_type = ClosableEmbedMenu.MENU_TYPE
+                child_reaction_list = []
+                extra_state = {
+                    'child_view_state': AwakeningHelpView.VIEW_TYPE
+                }
 
         state = view_state_type(original_author_id, view_state_type.VIEW_STATE_TYPE, query, color,
                                 monster_list, query_settings,
                                 title, instruction_message,
                                 child_menu_type=child_menu_type,
                                 child_reaction_list=child_reaction_list,
-                                reaction_list=initial_reaction_list
+                                reaction_list=initial_reaction_list,
+                                extra_state=extra_state
                                 )
         parent_menu = MonsterListMenu.menu()
         message = await ctx.send('Setting up!')

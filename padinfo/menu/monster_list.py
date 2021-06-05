@@ -5,6 +5,8 @@ from discordmenu.embed.menu import EmbedMenu, EmbedControl
 from tsutils import char_to_emoji
 from tsutils.menu.panes import emoji_buttons, MenuPanes
 
+from padinfo.menu.awakening_list import AwakeningListMenu, AwakeningListEmoji
+from padinfo.menu.closable_embed import ClosableEmbedMenu
 from padinfo.menu.id import IdMenu, IdMenuPanes, IdMenuEmoji
 from padinfo.menu.na_diff import NaDiffMenu, NaDiffEmoji
 from padinfo.view.id import IdView
@@ -47,7 +49,8 @@ class MonsterListMenu:
 
     child_menu_type_to_emoji_response_map = {
         IdMenu.MENU_TYPE: IdMenuEmoji.refresh,
-        NaDiffMenu.MENU_TYPE: NaDiffEmoji.home
+        NaDiffMenu.MENU_TYPE: NaDiffEmoji.home,
+        ClosableEmbedMenu.MENU_TYPE:
     }
 
     @staticmethod
